@@ -1,0 +1,89 @@
+---
+import '../styles/global.css';
+import Arrow from '../components/Arrow.astro';
+import { company } from '../data/company';
+interface Props { title?: string; description?: string; }
+const { title, description = 'SriNidhi Engineers delivers civil, mechanical and electrical work with more than 25 years of experience.' } = Astro.props;
+const links = [{href:'/', label:'Home', active: Astro.url.pathname === '/'}, {href:'/about/', label:'About us', active: Astro.url.pathname.startsWith('/about/')}, {href:'/projects/',label:'Completed projects', active: Astro.url.pathname.startsWith('/projects/')}, {href:'/services/',label:'Our expertise', active: Astro.url.pathname.startsWith('/services/')}, {href:'/clients/',label:'Client List', active: Astro.url.pathname.startsWith('/clients/')}];
+const contactPage = Astro.url.pathname.startsWith('/contact/');
+const privacyPage = Astro.url.pathname.startsWith('/privacy/');
+const mobileMenuLabel = links.find(link => link.active)?.label ?? (contactPage ? 'Connect With Us' : 'Menu');
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const photoHeroPage = Astro.url.pathname.startsWith('/about/') || Astro.url.pathname.startsWith('/projects/') || Astro.url.pathname.startsWith('/services/') || Astro.url.pathname.startsWith('/clients/') || contactPage;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ? `${title} | ${company.name}` : `${company.name} | Engineering with purpose`}</title>
+    <meta name="description" content={description} />
+    {!company.contentVerified && <meta name="robots" content="noindex, nofollow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta name="theme-color" content="#191c1e" />
+    <meta property="og:title" content={title ? `${title} | ${company.name}` : company.name} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body class:list={{'home-page': Astro.url.pathname === '/', 'photo-hero-page': photoHeroPage, 'contact-page': contactPage, 'privacy-page': privacyPage}}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="SriNidhi Engineers home"><img class="brand-logo" src="/images/logo.webp" width="52" height="52" alt="SriNidhi Engineers logo" /><span class="brand-type">SriNidhi<span>ENGINEERS</span></span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label={`Open navigation menu. Current page: ${mobileMenuLabel}`}><span>{mobileMenuLabel}</span><span class="menu-icon" aria-hidden="true"></span></button>
+      <nav id="site-nav" aria-label="Main navigation">
+        {links.map(link => <a href={link.href} aria-current={link.active ? 'page' : undefined}>{link.label}</a>)}
+        <a class="nav-contact" href="/contact/" aria-current={contactPage ? 'page' : undefined}>Connect With Us <Arrow diagonal /></a>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <div class="footer-top wrap"><a class="brand" href="/" aria-label="SriNidhi Engineers home"><img class="brand-logo" src="/images/logo.webp" width="52" height="52" alt="SriNidhi Engineers logo" /><span class="brand-type">SriNidhi<span>ENGINEERS</span></span></a><p>Design engineers & turnkey projects.<br />Pune, Maharashtra · India{contactPage && <><span class="footer-office-label">Registered office</span>Shivsagar Phase 2, Anand Nagar, Pune</>}</p><a class="text-link light" href="/contact/">Connect With Us <Arrow diagonal /></a></div>
+      <div class="footer-bottom wrap"><span>© {new Date().getFullYear()} {company.name}</span><div><a href="/projects/">Completed projects</a><a href="/clients/">Client list</a><a href="/contact/">Connect</a><a href="/privacy/">Privacy</a></div></div>
+    </footer>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+      const nav = document.querySelector<HTMLElement>('#site-nav');
+      const closeMenu = () => { toggle?.setAttribute('aria-expanded','false'); nav?.classList.remove('open'); };
+      toggle?.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') !== 'true'; toggle.setAttribute('aria-expanded', String(open)); nav?.classList.toggle('open', open); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') { closeMenu(); toggle.focus(); } });
+      nav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      window.matchMedia('(min-width: 901px)').addEventListener('change', closeMenu);
+
+      const header = document.querySelector<HTMLElement>('.site-header');
+      const heroImage = document.querySelector<HTMLElement>('.hero-image');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 36);
+      updateHeader();
+      window.addEventListener('scroll', updateHeader, { passive: true });
+
+      const revealTargets = document.querySelectorAll<HTMLElement>('.section .eyebrow, .section h2, .intro-copy, .footprint-list, .work-gallery > a, .credential-grid > div, .expertise-list > a, .page-hero .wrap:not(.page-hero-foot) > *, .work-index > a, .work-overview > *, .work-category-head > *, .photo-card, .service-item, .client-card, .clients-heading > *, .contact-layout > *, .contact-cta .cta-inner > *, .footer-top > *, .about-experience > *');
+      revealTargets.forEach((element, index) => {
+        element.classList.add('reveal');
+        if (element.matches('.photo-card, .work-gallery > a')) element.classList.add('reveal-zoom');
+        if (element.matches('.expertise-list > a, .work-index > a')) element.classList.add('reveal-right');
+        element.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 70}ms`);
+      });
+
+      if (reduceMotion.matches || !('IntersectionObserver' in window)) revealTargets.forEach(element => element.classList.add('is-visible'));
+      else {
+        const mobileMotion = window.matchMedia('(max-width: 900px)').matches;
+        const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+        }), { threshold: mobileMotion ? .06 : .12, rootMargin: mobileMotion ? '0px 0px -3% 0px' : '0px 0px -7% 0px' });
+        revealTargets.forEach(element => observer.observe(element));
+      }
+
+      if (heroImage && !reduceMotion.matches) {
+        let scheduled = false;
+        window.addEventListener('scroll', () => {
+          if (scheduled) return;
+          scheduled = true;
+          requestAnimationFrame(() => {
+            heroImage.style.setProperty('--hero-shift', `${Math.min(window.scrollY * .14, 90)}px`);
+            scheduled = false;
+          });
+        }, { passive: true });
+      }
+    </script>
+  </body>
+</html>

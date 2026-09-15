@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Arrow from '../components/Arrow.astro';
+import { company } from '../data/company';
+---
+<Layout title="Our expertise">
+  <section class="page-hero image-page-hero expertise-hero">
+    <img class="hero-image page-hero-image" src="/images/expertise-hero.jpg" width="1920" height="2880" alt="Steel roof structure photographed from below" fetchpriority="high" />
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap"><p class="eyebrow">OUR EXPERTISE</p><h1>Start with<br />your requirements.</h1><p>Integrated capability across civil construction, mechanical works, structural steel, MS/SS piping and electrical works.<br class="desktop-break" /> Planned and executed by one experienced team.</p></div>
+    <div class="page-hero-foot wrap"><a href="#expertise-details">GET TO KNOW OUR EXPERTISE <span aria-hidden="true">↓</span></a></div>
+  </section>
+  <section class="section wrap content-split" id="expertise-details"><div><p class="eyebrow red">HOW WE CAN HELP</p><h2>Find the right<br />way forward.</h2></div><div>{company.services.length ? <div class="service-list">{company.services.map((service,i)=><article class="service-item"><span class="service-number">{String(i+1).padStart(2,'0')}</span><div><h3>{service.title}</h3><p>{service.description}</p></div></article>)}</div> : <div class="prose"><p class="lead">Every enquiry starts with a conversation.</p><p>Share a short outline of what you need. We can discuss the project and provide relevant information about SriNidhi Engineers.</p><a class="text-link" href="/contact/">Discuss your requirements <Arrow diagonal /></a></div>}</div></section>
+  <section class="project-footprint section"><div class="wrap footprint-inner"><div><p class="eyebrow red">PROJECT FOOTPRINT</p><h2>Experience across<br />key regions.</h2></div><ul class="footprint-list" aria-label="States and regions where SriNidhi Engineers has completed work"><li>Maharashtra</li><li>Karnataka</li><li>Goa</li><li>Andhra Pradesh</li><li>Telangana</li></ul></div></section>
+</Layout>

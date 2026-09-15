@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Arrow from '../components/Arrow.astro';
+import { company } from '../data/company';
+---
+<Layout>
+  <section class="hero">
+    <img class="hero-image" src="/images/hero.webp" alt="Industrial engineering work by SriNidhi Engineers" width="1280" height="960" fetchpriority="high" />
+    <div class="hero-shade"></div>
+    <div class="hero-content wrap"><p class="eyebrow"><span class="red-line"></span> DESIGN ENGINEERS & TURNKEY CONTRACTORS</p><h1>Built on trust.<br />Driven by<br /><em>passion.</em></h1><p class="hero-description">Delivering civil and mechanical projects, heavy structural steel fabrication and erection, pipe racks, platforms, MS/SS piping, equipment erection, and electrical works.<br /><br />We manufacture MS/SS tanks, stainless-steel drains, and gratings for all industries—providing complete project execution through one experienced team.</p><div class="hero-actions"><a class="button" href="/projects/">Explore completed projects <Arrow diagonal /></a><a class="hero-secondary" href="/contact/">Discuss a requirement <Arrow /></a></div></div>
+    <div class="hero-foot wrap"><a href="#introduction">DISCOVER SRINIDHI <span aria-hidden="true">↓</span></a><span>PUNE, INDIA · TURNKEY ENGINEERING</span></div>
+  </section>
+  <section class="intro section wrap" id="introduction"><div><p class="eyebrow red">ABOUT US</p><h2>Many disciplines.<br />One commitment.</h2><div class="experience"><strong>25<span>+</span></strong><p>Years of engineering<br />and execution experience</p></div></div><div class="intro-copy"><p class="lead">The expertise to bring<br class="desktop-break" /> it all together.</p><p>{company.introduction}</p><a class="text-link" href="/about/">Discover SriNidhi <Arrow diagonal /></a></div></section>
+</Layout>

@@ -1,0 +1,19 @@
+{
+  "name": "srinidhi-engineers",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.19.0",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro check && astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^6.0.0",
+    "@astrojs/check": "^0.9.0",
+    "typescript": "^5.9.0"
+  }
+}

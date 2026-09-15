@@ -1,0 +1,20 @@
+export const clients = [
+  { name: 'United Breweries Ltd.', locations: 'Bangalore · Mangalore · Mumbai · Mysore · Goa' },
+  { name: 'Crown Beers Ltd. (AB InBev)', locations: 'Hyderabad · Telangana' },
+  { name: 'Harsha Constructions Limited Pune', locations: 'Site – Airport Hubli' },
+  { name: 'IVRCL Infrastructure & Projects Ltd.', locations: 'Pune · Hyderabad' },
+  { name: 'Tata Cummins Ltd.', locations: 'Pune · Vashi, Mumbai' },
+  { name: 'UB Engineering Ltd.', locations: 'Pune · Mumbai' },
+  { name: 'Thermax Ltd. (via Aquachill Systems)', locations: 'Vapi · Gujarat' },
+  { name: 'Zuari Agro Ltd.', locations: 'Goa · Baramati' },
+  { name: 'Swati Construction Ltd.', locations: 'Bangalore' },
+  { name: 'Avasarala Technologies Ltd.', locations: 'Bangalore' },
+  { name: 'Scalene Corporation', locations: 'Bangalore' },
+  { name: 'Trinity Coating Systems', locations: 'Bangalore' },
+  { name: 'MN Projects', locations: 'Bangalore' },
+  { name: 'Nestlé India Limited', locations: 'Hyderabad · Telangana' },
+  { name: 'Zuari Cement Ltd.', locations: 'Yerraguntla, Andhra Pradesh · Pune' },
+  { name: 'HIL Ltd.', locations: 'Hyderabad · Surat · Jhajjar, Haryana' },
+  { name: 'Shree Cement Ltd.', locations: 'Bulandshahr, Uttar Pradesh · Pune' },
+  { name: 'Pratham Project Engineers', locations: 'Pune' }
+] as const;

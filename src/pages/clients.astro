@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { clients } from '../data/clients';
+---
+<Layout title="Client List" description="View the key clients served by SriNidhi Engineers across industrial projects in India.">
+  <section class="page-hero image-page-hero clients-hero">
+    <img class="hero-image page-hero-image" src="/images/client-list-hero.jpg" width="3972" height="5950" alt="Business representatives shaking hands across a desk" fetchpriority="high" />
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap"><p class="eyebrow">CLIENT LIST</p><h1>Organizations<br />we have served.</h1><p>Client experience across civil, mechanical, structural, piping, equipment and electrical works.</p></div>
+    <div class="page-hero-foot wrap"><a href="#client-list">DISCOVER OUR CLIENT LIST <span aria-hidden="true">↓</span></a></div>
+  </section>
+
+  <section class="section clients-section" id="client-list">
+    <div class="wrap clients-heading"><div><p class="eyebrow red">MAJOR CLIENT DIRECTORY</p><h2>Major industrial relationships<br />across India.</h2></div><div><p>Companies served across industrial sectors and project locations.</p></div></div>
+    <ol class="client-grid wrap">
+      {clients.map(client => <li class="client-card"><div><h3>{client.name}</h3><p>{client.locations}</p></div></li>)}
+    </ol>
+  </section>
+</Layout>

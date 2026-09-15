@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Arrow from '../components/Arrow.astro';
+import { company } from '../data/company';
+const featuredExpertise = [
+  { service: company.services[1], projectId: 'mechanical', summary: 'Steel structures, process piping and equipment.' },
+  { service: company.services[0], projectId: 'civil', summary: 'Industrial buildings, foundations and infrastructure.' },
+  { service: company.services[2], projectId: 'paint-shop-installation', summary: 'Electrical systems, tested and commissioned.' }
+];
+---
+<Layout title="About us">
+  <section class="page-hero image-page-hero about-hero">
+    <img class="hero-image page-hero-image" src="/images/about-hero.png" width="996" height="684" alt="" fetchpriority="high" />
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap"><p class="eyebrow">ABOUT US</p><h1>Get to know<br />SriNidhi Engineers.</h1><p>More than 25 years of integrated engineering and project execution.<br class="desktop-break" /> One accountable team focused on quality, safety and dependable delivery.</p></div>
+    <div class="page-hero-foot wrap"><a href="#about-company">DISCOVER ABOUT US <span aria-hidden="true">↓</span></a></div>
+  </section>
+  <section class="section wrap content-split" id="about-company"><div><p class="eyebrow red">OUR COMPANY</p><h2>Behind the name.</h2></div><div class="prose about-company-copy"><p>SriNidhi Engineers operates on a single-contract, single-accountability model, carrying projects through engineering design, structural steel fabrication and erection, MS/SS piping, equipment installation, and electrical cabling, termination, testing and commissioning. We also manufacture MS/SS tanks, stainless-steel drains, and gratings for all industries.</p><p>Our team of seasoned professionals, supported by a complete range of tools and plant (T&amp;P), manages quality and schedule at every stage of execution.</p><p>This approach has been refined over 25 years of delivering industrial projects for various clients across India.</p><a class="text-link about-text-link" href="/contact/">Speak with us <Arrow diagonal /></a></div></section>
+  <section class="expertise-section section"><div class="wrap expertise-inner"><div><p class="eyebrow">OUR EXPERTISE</p><h2>From foundations<br />to final<br /><span>commissioning.</span></h2></div><div class="expertise-list">{featuredExpertise.map((item,i)=><a href={`/projects/#${item.projectId}`}><span class="list-number">{String(i+1).padStart(2,'0')}</span><div><h3>{item.service.title}</h3><p>{item.summary}</p></div><Arrow diagonal /></a>)}</div></div></section>
+  <section class="section about-experience-panel"><div class="wrap content-split about-experience"><div><p class="eyebrow red">PEOPLE & REACH</p><h2>Based in Pune.<br />Built on experience.</h2></div><div class="prose"><p>SriNidhi Engineers works across Maharashtra, Goa, Karnataka, Telangana and Andhra Pradesh, with experience across India.</p><p>Our associated manufacturing facility in Pune supports steel structures, MS/SS tanks, economizers, air filtration systems, structure supports and pipe racks.</p><p>Our focus is quality, safety and timely execution, supported by experienced professionals and the tools and plant needed for the work.</p><a class="text-link about-text-link" href="/projects/">See completed projects <Arrow diagonal /></a></div></div></section>
+</Layout>

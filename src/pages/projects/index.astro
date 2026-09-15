@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Arrow from '../../components/Arrow.astro';
+import { workCategories, workImagePath } from '../../data/work';
+---
+<Layout title="Completed Projects" description="Explore completed civil, mechanical, MS/SS piping and equipment, drains and gratings, and paint shop installation work by SriNidhi Engineers.">
+  <section class="page-hero image-page-hero work-hero">
+    <img class="hero-image page-hero-image" src="/images/work-hero.png" width="1306" height="849" alt="" fetchpriority="high" />
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap"><p class="eyebrow">COMPLETED PROJECTS</p><h1>Completed work.<br />Built to perform.</h1><p>Explore completed civil and mechanical works, structural steel, MS/SS piping and equipment, stainless-steel drains and gratings, and paint shop installation.<br class="desktop-break" /> Each photograph reflects practical execution across demanding industrial environments.</p></div>
+    <div class="page-hero-foot wrap"><a href="#project-categories">DISCOVER COMPLETED PROJECTS <span aria-hidden="true">↓</span></a></div>
+  </section>
+
+  <nav class="work-index wrap" id="project-categories" aria-label="Completed project categories">
+    {workCategories.map(category => <a href={`#${category.id}`}><span>{category.number}</span>{category.title}<Arrow diagonal /></a>)}
+  </nav>
+
+  <div class="work-collections">
+    {workCategories.map(category => <section class="work-category" id={category.id}>
+      <div class="work-category-head wrap"><div><span class="category-number">{category.number}</span><p class="eyebrow red">SELECTED COMPLETED WORK</p><h2>{category.title}</h2></div><p>{category.summary}</p></div>
+      <div class="photo-grid wrap" aria-label={`${category.title} photo gallery`}>
+        {category.images.map((filename, index) => <button class="photo-card" type="button" data-gallery-image={workImagePath(filename)} data-gallery-alt={`${category.title} photograph ${index + 1}`} data-gallery-label={`${category.title} · ${String(index + 1).padStart(2,'0')} of ${String(category.images.length).padStart(2,'0')}`} aria-label={`Open ${category.title.toLowerCase()} photograph ${index + 1}`}>
+          <img src={workImagePath(filename)} alt={`${category.title} photograph ${index + 1}`} width="900" height="680" loading="lazy" />
+          <span><b>{String(index + 1).padStart(2,'0')}</b><small>View photo</small></span>
+        </button>)}
+      </div>
+    </section>)}
+  </div>
+
+  <dialog class="work-lightbox" id="work-lightbox" aria-label="Work photograph viewer">
+    <button class="lightbox-close" type="button" aria-label="Close image viewer">Close <span aria-hidden="true">×</span></button>
+    <figure><img src="" alt="" /><figcaption></figcaption></figure>
+  </dialog>
+
+  <script>
+    const dialog = document.querySelector<HTMLDialogElement>('#work-lightbox');
+    const dialogImage = dialog?.querySelector<HTMLImageElement>('img');
+    const dialogCaption = dialog?.querySelector<HTMLElement>('figcaption');
+    const closeButton = dialog?.querySelector<HTMLButtonElement>('.lightbox-close');
+    document.querySelectorAll<HTMLButtonElement>('.photo-card').forEach(button => button.addEventListener('click', () => {
+      if (!dialog || !dialogImage || !dialogCaption) return;
+      dialogImage.src = button.dataset.galleryImage || '';
+      dialogImage.alt = button.dataset.galleryAlt || '';
+      dialogCaption.textContent = button.dataset.galleryLabel || '';
+      dialog.showModal();
+    }));
+    closeButton?.addEventListener('click', () => dialog?.close());
+    dialog?.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  </script>
+</Layout>
