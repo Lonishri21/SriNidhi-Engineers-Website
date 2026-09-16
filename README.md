@@ -37,7 +37,8 @@ The Completed Projects page contains 55 photographs organised into Mechanical Wo
 |-- pnpm-lock.yaml
 |-- pnpm-workspace.yaml
 |-- README.md
-`-- tsconfig.json
+|-- tsconfig.json
+`-- wrangler.jsonc
 ```
 
 ## Local development
@@ -80,7 +81,9 @@ Upload the contents of this folder to the root of a GitHub repository. For Cloud
 - Node.js version: 22.12 or newer
 - Environment variable: `PUBLIC_SITE_URL`
 
-After deployment, submit one test enquiry and confirm it reaches `essn2020@gmail.com`.
+The included `wrangler.jsonc` tells Cloudflare's current Workers deployment flow to publish the generated `dist/` directory as a static website and use the custom 404 page.
+
+After deployment, submit one test enquiry and confirm it reaches `sbloni@srinidhi.net`.
 
 ## Editing content
 

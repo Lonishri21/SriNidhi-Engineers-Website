@@ -23,6 +23,11 @@ export const workCategories = [
     id: 'paint-shop-installation', number: '05', title: 'Paint Shop Installation Work',
     summary: 'PT&ED paint shop installation work successfully completed for JSW Motors.',
     images: ['electrical-01.jpeg','electrical-02.jpeg','paint-shop-installation-03.jpeg','paint-shop-installation-04.jpeg','paint-shop-installation-05.jpeg','paint-shop-installation-06.jpeg']
+  },
+  {
+    id: 'electrical-works', number: '06', title: 'Electrical Works',
+    summary: 'Installation of electrical panels, cable-management systems, power cabling, and associated industrial electrical infrastructure.',
+    images: ['electrical-works-01.jpg','electrical-works-02.jpg','electrical-works-03.jpg','electrical-works-04.jpg','electrical-works-05.jpg']
   }
 ] as const;
 

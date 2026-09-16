@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Arrow from '../components/Arrow.astro';
 import { company } from '../data/company';
-const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY?.trim() || 'b3569e31-a9a4-41f8-b1de-4465dc939188';
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY?.trim() || '2fb4d55d-ba78-45af-a012-2b258815c353';
 const configured = !!accessKey;
 const phoneHref = company.phone.replace(/[^+\d]/g, '');
 ---
@@ -13,7 +13,7 @@ const phoneHref = company.phone.replace(/[^+\d]/g, '');
     <div class="wrap"><p class="eyebrow">CONNECT WITH SRINIDHI</p><h1>Let’s build<br />a conversation.</h1><p>Have a project in mind? Tell us a little about it.</p></div>
     <div class="page-hero-foot wrap"><a href="#contact-details">CONNECT WITH US <span aria-hidden="true">↓</span></a></div>
   </section>
-  <section class="section wrap contact-layout" id="contact-details"><div class="contact-info"><p class="eyebrow red">GET IN TOUCH</p><h2>Your next project<br />starts here.</h2><p>Share your requirements, project location, and the best way to reach you.</p><div class="contact-details"><div class="contact-detail"><span>Your contact</span>{company.name}</div>{company.email && <div class="contact-detail"><span>Email us</span><a href={`mailto:${company.email}`}>{company.email}</a></div>}{company.phone && <div class="contact-detail"><span>Call us</span><a href={`tel:${phoneHref}`}>{company.phone}</a></div>}{company.address && <div class="contact-detail"><span>Visit us</span>{company.address}</div>}<div class="contact-detail"><span>Corresponding offices</span>Bangalore · Goa</div></div></div>
+  <section class="section wrap contact-layout" id="contact-details"><div class="contact-info"><p class="eyebrow red">GET IN TOUCH</p><h2>Your next project<br />starts here.</h2><p>Share your requirements, project location, and the best way to reach you.</p><div class="contact-details"><div class="contact-detail"><span>Your contact</span>{company.name}</div>{company.email && <div class="contact-detail"><span>Email us</span><div class="contact-email-links"><a href={`mailto:${company.email}`}>{company.email}</a><a href={`mailto:${company.alternateEmail}`}>{company.alternateEmail}</a></div></div>}{company.phone && <div class="contact-detail"><span>Call us</span><a href={`tel:${phoneHref}`}>{company.phone}</a></div>}{company.address && <div class="contact-detail"><span>Visit us</span>{company.address}</div>}<div class="contact-detail"><span>Corresponding offices</span>Bangalore · Goa</div></div></div>
   <form class="enquiry-form" id="enquiry-form" action="https://api.web3forms.com/submit" method="POST" data-configured={String(configured)}>
     <h2>Send an enquiry</h2><p class="form-intro">Fields marked * are required.</p>
     {!configured && <p class="form-unavailable"><strong>Direct delivery is being activated.</strong> The form will send inside this page once the company email is connected. You can still connect with us at <a href={`mailto:${company.email}`}>{company.email}</a>.</p>}
