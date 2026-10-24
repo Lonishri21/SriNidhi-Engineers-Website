@@ -12,7 +12,7 @@ The official SriNidhi Engineers company website, built with Astro, TypeScript, a
 - Privacy Notice
 - Custom 404 page
 
-The Completed Projects page contains 60 photographs organised into Mechanical Works, MS/SS Piping and Equipments, Civil Works, SS Drains and Gratings, Paint Shop Installation Work, and Electrical Works.
+The Completed Projects page contains 60 photographs organised into Mechanical Works, MS/SS Piping and Equipment, Civil Works, SS Drains and Gratings, Paint Shop Installation Work, and Electrical Works.
 
 ## Project structure
 

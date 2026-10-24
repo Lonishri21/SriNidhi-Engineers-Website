@@ -5,7 +5,7 @@ export const workCategories = [
     images: ['mechanical-01.jpeg','mechanical-02.gif','mechanical-03.jpeg','mechanical-04.jpeg','mechanical-05.jpeg','mechanical-06.jpeg','mechanical-07.jpeg','mechanical-08.jpeg','mechanical-09.jpeg','mechanical-10.jpeg','mechanical-11.jpeg','mechanical-12.jpeg','mechanical-13.png','mechanical-14.gif','mechanical-19.jpeg','mechanical-20.jpeg','mechanical-21.jpeg','mechanical-22.jpeg','mechanical-23.jpeg','mechanical-24.jpeg','mechanical-25.jpeg','mechanical-26.jpeg','mechanical-27.jpeg']
   },
   {
-    id: 'ms-ss-piping', number: '02', title: 'MS/SS Piping and Equipments',
+    id: 'ms-ss-piping', number: '02', title: 'MS/SS Piping and Equipment',
     summary: 'Fabrication, installation and routing of MS/SS process and utility piping, along with equipment installation for industrial systems.',
     images: ['ms-ss-piping-01.jpeg','ms-ss-piping-02.jpeg','ms-ss-piping-03.jpeg','ms-ss-piping-04.jpeg']
   },

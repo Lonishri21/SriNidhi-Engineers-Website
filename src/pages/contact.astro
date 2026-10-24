@@ -21,8 +21,8 @@ const phoneHref = company.phone.replace(/[^+\d]/g, '');
     <input type="hidden" name="access_key" value={accessKey} />
     <input type="hidden" name="subject" value="New website enquiry — SriNidhi Engineers" />
     <input type="hidden" name="from_name" value="SriNidhi Engineers website" />
-    <input class="honeypot" type="checkbox" name="botcheck" tabindex="-1" aria-hidden="true" autocomplete="off" />
-    <div class="form-row"><div class="field"><label for="name">Full name *</label><input id="name" name="name" autocomplete="name" placeholder="Your name" required maxlength="120" /></div><div class="field"><label for="phone">Phone number <span>(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number" maxlength="40" /></div></div>
+    <input class="honeypot" type="checkbox" name="botcheck" tabindex="-1" aria-hidden="true" />
+    <div class="form-row"><div class="field"><label for="name">Full name *</label><input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required maxlength="120" /></div><div class="field"><label for="phone">Phone number <span>(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number" maxlength="40" /></div></div>
     <div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required maxlength="254" /></div>
     <div class="field"><label for="message">Tell us about your project *</label><textarea id="message" name="message" rows="5" placeholder="Project type, location, scope, or anything else you’d like us to know…" required minlength="10" maxlength="5000"></textarea></div>
     <p class="form-privacy">We’ll use your details to respond to your enquiry. Read our <a href="/privacy/">privacy notice</a>.</p>

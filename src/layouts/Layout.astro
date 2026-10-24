@@ -4,7 +4,7 @@ import Arrow from '../components/Arrow.astro';
 import { company } from '../data/company';
 interface Props { title?: string; description?: string; }
 const { title, description = 'SriNidhi Engineers delivers civil, mechanical and electrical work with more than 25 years of experience.' } = Astro.props;
-const links = [{href:'/', label:'Home', active: Astro.url.pathname === '/'}, {href:'/about/', label:'About us', active: Astro.url.pathname.startsWith('/about/')}, {href:'/projects/',label:'Completed projects', active: Astro.url.pathname.startsWith('/projects/')}, {href:'/services/',label:'Our expertise', active: Astro.url.pathname.startsWith('/services/')}, {href:'/clients/',label:'Client List', active: Astro.url.pathname.startsWith('/clients/')}, {href:'/careers/',label:'Careers', active: Astro.url.pathname.startsWith('/careers/')}];
+const links = [{href:'/', label:'Home', active: Astro.url.pathname === '/'}, {href:'/about/', label:'About us', active: Astro.url.pathname.startsWith('/about/')}, {href:'/projects/',label:'Completed projects', active: Astro.url.pathname.startsWith('/projects/')}, {href:'/services/',label:'Our expertise', active: Astro.url.pathname.startsWith('/services/')}, {href:'/clients/',label:'Client list', active: Astro.url.pathname.startsWith('/clients/')}, {href:'/careers/',label:'Careers', active: Astro.url.pathname.startsWith('/careers/')}];
 const contactPage = Astro.url.pathname.startsWith('/contact/');
 const privacyPage = Astro.url.pathname.startsWith('/privacy/');
 const mobileMenuLabel = links.find(link => link.active)?.label ?? (contactPage ? 'Connect With Us' : 'Menu');
@@ -29,7 +29,7 @@ const photoHeroPage = Astro.url.pathname.startsWith('/about/') || Astro.url.path
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <a class="brand" href="/" aria-label="SriNidhi Engineers home"><img class="brand-logo" src="/images/logo.webp" width="52" height="52" alt="SriNidhi Engineers logo" /><span class="brand-type">SriNidhi<span>ENGINEERS</span></span></a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label={`Open navigation menu. Current page: ${mobileMenuLabel}`}><span>{mobileMenuLabel}</span><span class="menu-icon" aria-hidden="true"></span></button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label={`Open navigation menu. Current page: ${mobileMenuLabel}`}><span>{mobileMenuLabel}</span><span class="menu-icon" aria-hidden="true"></span></button>
       <nav id="site-nav" aria-label="Main navigation">
         {links.map(link => <a href={link.href} aria-current={link.active ? 'page' : undefined}>{link.label}</a>)}
         <a class="nav-contact" href="/contact/" aria-current={contactPage ? 'page' : undefined}>Connect With Us <Arrow diagonal /></a>

@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Arrow from '../../components/Arrow.astro';
 import { workCategories, workImagePath } from '../../data/work';
 ---
-<Layout title="Completed Projects" description="Explore completed civil, mechanical, electrical, MS/SS piping and equipment, drains and gratings, and paint shop installation work by SriNidhi Engineers.">
+<Layout title="Completed projects" description="Explore completed civil, mechanical, electrical, MS/SS piping and equipment, drains and gratings, and paint shop installation work by SriNidhi Engineers.">
   <section class="page-hero image-page-hero work-hero">
     <img class="hero-image page-hero-image" src="/images/work-hero.png" width="1306" height="849" alt="" fetchpriority="high" />
     <div class="hero-shade" aria-hidden="true"></div>
@@ -18,8 +18,8 @@ import { workCategories, workImagePath } from '../../data/work';
   <div class="work-collections">
     {workCategories.map(category => <section class="work-category" id={category.id}>
       <div class="work-category-head wrap"><div><span class="category-number">{category.number}</span><p class="eyebrow red">SELECTED COMPLETED WORK</p><h2>{category.title}</h2></div><p>{category.summary}</p></div>
-      <div class="photo-grid wrap" aria-label={`${category.title} photo gallery`}>
-        {category.images.map((filename, index) => <button class="photo-card" type="button" data-gallery-image={workImagePath(filename)} data-gallery-alt={`${category.title} photograph ${index + 1}`} data-gallery-label={`${category.title} · ${String(index + 1).padStart(2,'0')} of ${String(category.images.length).padStart(2,'0')}`} aria-label={`Open ${category.title.toLowerCase()} photograph ${index + 1}`}>
+      <div class="photo-grid wrap" role="group" aria-label={`${category.title} photo gallery`}>
+        {category.images.map((filename, index) => <button class="photo-card" type="button" data-gallery-image={workImagePath(filename)} data-gallery-alt={`${category.title} photograph ${index + 1}`} data-gallery-label={`${category.title} · ${String(index + 1).padStart(2,'0')} of ${String(category.images.length).padStart(2,'0')}`} aria-label={`Open ${category.title} photograph ${index + 1}`}>
           <img src={workImagePath(filename)} alt={`${category.title} photograph ${index + 1}`} width="900" height="680" loading="lazy" />
           <span><b>{String(index + 1).padStart(2,'0')}</b><small>View photo</small></span>
         </button>)}
@@ -29,16 +29,18 @@ import { workCategories, workImagePath } from '../../data/work';
 
   <dialog class="work-lightbox" id="work-lightbox" aria-label="Work photograph viewer">
     <button class="lightbox-close" type="button" aria-label="Close image viewer">Close <span aria-hidden="true">×</span></button>
-    <figure><img alt="" /><figcaption></figcaption></figure>
+    <figure><figcaption></figcaption></figure>
   </dialog>
 
   <script>
     const dialog = document.querySelector<HTMLDialogElement>('#work-lightbox');
-    const dialogImage = dialog?.querySelector<HTMLImageElement>('img');
     const dialogCaption = dialog?.querySelector<HTMLElement>('figcaption');
+    // The viewer image is created here so the page never contains an <img> without a source
+    const dialogImage = document.createElement('img');
+    dialogCaption?.before(dialogImage);
     const closeButton = dialog?.querySelector<HTMLButtonElement>('.lightbox-close');
     document.querySelectorAll<HTMLButtonElement>('.photo-card').forEach(button => button.addEventListener('click', () => {
-      if (!dialog || !dialogImage || !dialogCaption) return;
+      if (!dialog || !dialogCaption) return;
       dialogImage.src = button.dataset.galleryImage || '';
       dialogImage.alt = button.dataset.galleryAlt || '';
       dialogCaption.textContent = button.dataset.galleryLabel || '';
