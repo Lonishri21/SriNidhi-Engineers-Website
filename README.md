@@ -7,11 +7,12 @@ The official SriNidhi Engineers company website, built with Astro, TypeScript, a
 - Completed Projects
 - Our Expertise
 - Client List
+- Careers
 - Connect With Us
 - Privacy Notice
 - Custom 404 page
 
-The Completed Projects page contains 55 photographs organised into Mechanical Works, MS/SS Piping and Equipments, Civil Works, SS Drains and Gratings, and Paint Shop Installation Work.
+The Completed Projects page contains 60 photographs organised into Mechanical Works, MS/SS Piping and Equipments, Civil Works, SS Drains and Gratings, Paint Shop Installation Work, and Electrical Works.
 
 ## Project structure
 
@@ -21,8 +22,7 @@ The Completed Projects page contains 55 photographs organised into Mechanical Wo
 |   |-- images/
 |   |   `-- work/
 |   |-- _headers
-|   |-- favicon.png
-|   `-- favicon.svg
+|   `-- favicon.png
 |-- src/
 |   |-- components/
 |   |-- data/
@@ -90,6 +90,7 @@ After deployment, submit one test enquiry and confirm it reaches `sbloni@srinidh
 - Company details and contact address: `src/data/company.ts`
 - Client list: `src/data/clients.ts`
 - Completed-work galleries: `src/data/work.ts`
+- Careers job openings: `src/data/careers.ts`
 - Page templates: `src/pages/`
 - Shared layout and navigation: `src/layouts/Layout.astro`
 - Website styling: `src/styles/global.css`

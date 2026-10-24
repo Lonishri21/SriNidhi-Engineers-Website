@@ -55,3 +55,5 @@ form?.addEventListener('submit', async event => {
     enquiryStatus?.focus();
   }
 });
+
+export {};

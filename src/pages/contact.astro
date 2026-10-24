@@ -2,7 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Arrow from '../components/Arrow.astro';
 import { company } from '../data/company';
-const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY?.trim() || '2fb4d55d-ba78-45af-a012-2b258815c353';
+import { web3formsKey } from '../data/forms';
+const accessKey = web3formsKey;
 const configured = !!accessKey;
 const phoneHref = company.phone.replace(/[^+\d]/g, '');
 ---
